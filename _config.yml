@@ -2,3 +2,4 @@ title: Neural Mechanics
 description: Exploring the physics of AI through from-scratch implementations.
 author: Manoj Sharma
 theme: jekyll-theme-minimal
+mathjax: true
