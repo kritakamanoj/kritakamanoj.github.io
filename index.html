@@ -1064,6 +1064,129 @@
             background: var(--amber)
         }
 
+        /* ── RUST / SIDE PROJECTS ── */
+        .rust-section {
+            background: var(--bg);
+        }
+
+        .rust-project-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            background: var(--surface);
+            border: 1px solid var(--border-b);
+            border-radius: 6px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .rust-project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at top right, rgba(215, 119, 50, 0.08) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .rust-project-card:hover {
+            border-color: rgba(215, 119, 50, 0.4);
+        }
+
+        .rust-badge {
+            background: rgba(215, 119, 50, 0.12);
+            color: #e07b3a;
+            border: 1px solid rgba(215, 119, 50, 0.25);
+        }
+
+        .rust-tag {
+            background: rgba(215, 119, 50, 0.1);
+            color: #e07b3a;
+            border: 1px solid rgba(215, 119, 50, 0.2);
+        }
+
+        .rust-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            font-family: var(--mono);
+            font-size: 12px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 2px;
+            border: 1px solid rgba(215, 119, 50, 0.4);
+            color: #e07b3a;
+            background: rgba(215, 119, 50, 0.08);
+            transition: all 0.2s;
+            margin-top: 1.5rem;
+            width: fit-content;
+        }
+
+        .rust-link-btn:hover {
+            background: rgba(215, 119, 50, 0.18);
+            border-color: #e07b3a;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(215, 119, 50, 0.18);
+        }
+
+        .rust-project-info .ptag {
+            color: #e07b3a;
+        }
+
+        .snake-canvas-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            max-width: 320px;
+            margin: 0 auto;
+            border: 1px solid rgba(215, 119, 50, 0.25);
+            border-radius: 4px;
+            overflow: hidden;
+            background: #05080c;
+            box-shadow: 0 0 40px rgba(215, 119, 50, 0.08), inset 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .snake-canvas-wrap canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .snake-canvas-label {
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(215, 119, 50, 0.5);
+        }
+
+        .snake-score-badge {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            font-size: 10px;
+            font-family: var(--mono);
+            color: rgba(215, 119, 50, 0.7);
+            letter-spacing: 0.05em;
+        }
+
+        @media(max-width: 900px) {
+            .rust-project-card {
+                grid-template-columns: 1fr;
+            }
+            .snake-canvas-wrap {
+                max-width: 260px;
+            }
+        }
+
         /* ── RESUME & BLOG ── */
         .resume-section {
             background: var(--surface);
@@ -1568,6 +1691,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#journey">Journey</a></li>
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#side-projects">Side Projects</a></li>
             <li><a href="#blog">Blog</a></li>
             <li><a href="#resume">Resume</a></li>
             <li><a href="#connect">Connect</a></li>
@@ -1845,6 +1969,52 @@
         </div>
     </section>
 
+    <!-- SIDE PROJECTS (RUST) -->
+    <section id="side-projects" class="rust-section">
+        <div class="inner fade-in">
+            <div class="slabel" style="color:#e07b3a">Side Projects</div>
+            <h2>Hacking in <em style="color:#e07b3a;font-family:var(--serif)">Rust.</em><br>Learning by doing.</h2>
+
+            <div class="rust-project-card">
+                <!-- Info left -->
+                <div class="rust-project-info">
+                    <div class="ptag">rusty_snake · systems / game</div>
+                    <div class="ptitle" style="font-family:var(--display);font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.7rem;">Rusty Snake 🐍</div>
+                    <div class="pdesc" style="margin-bottom:1rem">
+                        A terminal-based Snake game written entirely in <strong style="color:#e07b3a">Rust</strong> — my first deep dive into the language.
+                        The project explores Rust's ownership model, struct-based game state, and low-level terminal rendering via
+                        <code style="background:var(--surface2);padding:1px 6px;border-radius:3px;font-size:11px;color:#e07b3a">crossterm</code>.
+                        Every frame is a lesson in memory safety, zero-cost abstractions, and systems-level thinking.
+                    </div>
+                    <div class="pdesc">
+                        Built as part of a broader mission: understand Rust's borrow checker from the ground up before
+                        touching higher-level tooling. Simple concept, serious learning.
+                    </div>
+                    <div class="pstack" style="margin-top:1rem;gap:6px;display:flex;flex-wrap:wrap">
+                        <span class="tag rust-tag">Rust</span>
+                        <span class="tag rust-tag">crossterm</span>
+                        <span class="tag rust-tag">Terminal UI</span>
+                        <span class="tag rust-tag">Ownership Model</span>
+                        <span class="tag rust-tag">Game Loop</span>
+                    </div>
+                    <a href="https://github.com/kritakamanoj/rusty_snake" target="_blank" class="rust-link-btn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                        View on GitHub
+                    </a>
+                </div>
+
+                <!-- Snake animation right -->
+                <div>
+                    <div class="snake-canvas-wrap">
+                        <canvas id="snakeCanvas" width="320" height="320"></canvas>
+                        <div class="snake-score-badge" id="snakeScore">score: 0</div>
+                        <div class="snake-canvas-label">rusty_snake · demo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- BLOG POSTS -->
     <section id="blog" class="s-alt" style="background:var(--bg)">
         <div class="inner fade-in">
@@ -1961,6 +2131,197 @@
         <span>Manoj Sharma · <span class="f-acc">staff qe → deep tech ai</span></span>
         <span>celonis · mercedes-benz.io · wayfair · bmc · persistent</span>
     </footer>
+
+    <script>
+        // ── Snake Canvas Animation ──
+        (function () {
+            const canvas = document.getElementById('snakeCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const CELL = 16;
+            const COLS = canvas.width / CELL;
+            const ROWS = canvas.height / CELL;
+            const RUST_ORANGE = '#e07b3a';
+            const RUST_DIM = 'rgba(215,119,50,0.25)';
+            const RUST_GLOW = 'rgba(215,119,50,0.55)';
+            const FOOD_COLOR = '#f0a36a';
+            const BG = '#05080c';
+            const GRID_COLOR = 'rgba(215,119,50,0.04)';
+
+            let snake, dir, nextDir, food, score, frameCount, gameOver;
+
+            function randomCell() {
+                return { x: Math.floor(Math.random() * COLS), y: Math.floor(Math.random() * ROWS) };
+            }
+
+            function placeFood(snakeBody) {
+                let f;
+                do { f = randomCell(); } while (snakeBody.some(s => s.x === f.x && s.y === f.y));
+                return f;
+            }
+
+            function init() {
+                snake = [
+                    { x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }, { x: 7, y: 10 }
+                ];
+                dir = { x: 1, y: 0 };
+                nextDir = { x: 1, y: 0 };
+                food = placeFood(snake);
+                score = 0;
+                frameCount = 0;
+                gameOver = false;
+                document.getElementById('snakeScore').textContent = 'score: 0';
+            }
+
+            function drawGrid() {
+                ctx.strokeStyle = GRID_COLOR;
+                ctx.lineWidth = 0.5;
+                for (let x = 0; x <= COLS; x++) {
+                    ctx.beginPath();
+                    ctx.moveTo(x * CELL, 0);
+                    ctx.lineTo(x * CELL, canvas.height);
+                    ctx.stroke();
+                }
+                for (let y = 0; y <= ROWS; y++) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, y * CELL);
+                    ctx.lineTo(canvas.width, y * CELL);
+                    ctx.stroke();
+                }
+            }
+
+            function drawCell(x, y, color, glow) {
+                if (glow) {
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = glow;
+                }
+                ctx.fillStyle = color;
+                ctx.fillRect(x * CELL + 1, y * CELL + 1, CELL - 2, CELL - 2);
+                ctx.shadowBlur = 0;
+            }
+
+            function drawSnake() {
+                snake.forEach((seg, i) => {
+                    const t = 1 - i / snake.length;
+                    const alpha = 0.3 + 0.7 * t;
+                    const color = i === 0 ? RUST_ORANGE : `rgba(215,119,50,${alpha.toFixed(2)})`;
+                    const glow = i === 0 ? RUST_GLOW : null;
+                    drawCell(seg.x, seg.y, color, glow);
+                    // inner square for head
+                    if (i === 0) {
+                        ctx.fillStyle = '#fff';
+                        ctx.fillRect(seg.x * CELL + CELL * 0.3, seg.y * CELL + CELL * 0.3, CELL * 0.15, CELL * 0.15);
+                    }
+                });
+            }
+
+            function drawFood() {
+                const pulse = 0.7 + 0.3 * Math.sin(frameCount * 0.12);
+                ctx.shadowBlur = 12 * pulse;
+                ctx.shadowColor = RUST_ORANGE;
+                ctx.fillStyle = FOOD_COLOR;
+                const cx = food.x * CELL + CELL / 2;
+                const cy = food.y * CELL + CELL / 2;
+                const r = (CELL / 2 - 2) * pulse;
+                ctx.beginPath();
+                ctx.arc(cx, cy, r, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+
+            function drawGameOver() {
+                ctx.fillStyle = 'rgba(5,8,12,0.7)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = RUST_ORANGE;
+                ctx.font = `bold 14px 'JetBrains Mono', monospace`;
+                ctx.textAlign = 'center';
+                ctx.fillText('game over · restarting...', canvas.width / 2, canvas.height / 2);
+                ctx.textAlign = 'left';
+            }
+
+            function update() {
+                dir = { ...nextDir };
+                const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+                // wall wrap
+                head.x = (head.x + COLS) % COLS;
+                head.y = (head.y + ROWS) % ROWS;
+                // self collision
+                if (snake.slice(0, -1).some(s => s.x === head.x && s.y === head.y)) {
+                    gameOver = true;
+                    return;
+                }
+                snake.unshift(head);
+                if (head.x === food.x && head.y === food.y) {
+                    score++;
+                    document.getElementById('snakeScore').textContent = `score: ${score}`;
+                    food = placeFood(snake);
+                } else {
+                    snake.pop();
+                }
+            }
+
+            // Auto-pilot AI: simple BFS direction chooser
+            function aiMove() {
+                const head = snake[0];
+                const dirs = [{x:1,y:0},{x:-1,y:0},{x:0,y:1},{x:0,y:-1}];
+                // avoid reversing
+                const validDirs = dirs.filter(d => !(d.x === -dir.x && d.y === -dir.y));
+                // prefer direction towards food
+                validDirs.sort((a, b) => {
+                    const na = { x: (head.x + a.x + COLS) % COLS, y: (head.y + a.y + ROWS) % ROWS };
+                    const nb = { x: (head.x + b.x + COLS) % COLS, y: (head.y + b.y + ROWS) % ROWS };
+                    const da = Math.abs(na.x - food.x) + Math.abs(na.y - food.y);
+                    const db = Math.abs(nb.x - food.x) + Math.abs(nb.y - food.y);
+                    return da - db;
+                });
+                // pick best safe direction
+                for (const d of validDirs) {
+                    const nx = { x: (head.x + d.x + COLS) % COLS, y: (head.y + d.y + ROWS) % ROWS };
+                    if (!snake.slice(0, -1).some(s => s.x === nx.x && s.y === nx.y)) {
+                        nextDir = d;
+                        break;
+                    }
+                }
+            }
+
+            let lastTime = 0;
+            const SPEED = 110; // ms per step
+            let stepAccum = 0;
+
+            function loop(ts) {
+                const dt = ts - lastTime;
+                lastTime = ts;
+                frameCount++;
+
+                ctx.fillStyle = BG;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                drawGrid();
+
+                if (gameOver) {
+                    drawSnake();
+                    drawFood();
+                    drawGameOver();
+                    setTimeout(init, 1400);
+                    requestAnimationFrame(loop);
+                    return;
+                }
+
+                stepAccum += dt;
+                if (stepAccum >= SPEED) {
+                    stepAccum -= SPEED;
+                    aiMove();
+                    update();
+                }
+
+                drawSnake();
+                drawFood();
+                requestAnimationFrame(loop);
+            }
+
+            init();
+            requestAnimationFrame(loop);
+        })();
+    </script>
 
     <script>
         const io = new IntersectionObserver(entries => {
