@@ -920,7 +920,7 @@
             box-shadow: 0 0 40px rgba(var(--rust-rgb), 0.08)
         }
 
-        .media-frame video {
+        .media-frame img {
             display: block;
             width: 100%;
             height: auto
@@ -2333,13 +2333,11 @@
 
                     <div>
                         <div class="media-frame">
-                            <video controls muted loop playsinline preload="none"
-                                poster="assets/kritaka-agent-poster.jpg"
-                                aria-label="Walkthrough of kritaka-agent milestone 1">
-                                <source src="assets/kritaka-agent.mp4" type="video/mp4">
-                            </video>
+                            <img src="assets/kritaka-agent.gif" alt="Animated walkthrough of kritaka-agent: an engine, not a harness"
+                                width="720" height="405" loading="lazy" decoding="async"
+                                onerror="this.onerror=null;this.src='assets/kritaka-agent-poster.jpg'">
                         </div>
-                        <div class="media-caption">Milestone 1 walkthrough · 38s</div>
+                        <div class="media-caption">kritaka-agent walkthrough</div>
                         <div class="agent-anim" id="agentAnim" role="img"
                             aria-label="Animated demo of the agent loop: Thinking, Acting, Observing, Done">
                             <div class="aa-states" aria-hidden="true">
