@@ -1,5 +1,6 @@
-title: Neural Mechanics
-description: Exploring the physics of AI through from-scratch implementations.
+title: Manoj Sharma · Reliable AI Systems
+description: Staff Quality Engineer building reliable AI systems. A Rust + Python AI agent engine, deep learning from first principles, and 15+ years of QE leadership.
 author: Manoj Sharma
-theme: jekyll-theme-minimal
-mathjax: true
+url: https://kritakamanoj.dev
+exclude:
+  - README.md
